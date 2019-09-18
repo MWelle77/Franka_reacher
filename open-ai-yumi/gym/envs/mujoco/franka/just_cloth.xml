@@ -1,0 +1,85 @@
+<mujoco model="panda">
+    <compiler angle="radian" />
+    <!--option timestep="0.01" gravity="0 0 0" integrator="Euler" /-->
+    <option timestep="0.01" gravity="0 0 -9.81" integrator="Euler" />
+    <size njmax="5000" nconmax="10000" />
+    
+    <worldbody>
+        <!-- Table -->
+        <geom rgba="1 1 1 1" name="table" type="box" pos="0.3 0 -0.008" size="1.0 1.0 0.01"/>
+        
+        
+
+       
+
+       
+
+
+<composite type="grid" count="15 15 1" spacing="0.05" offset="0 0 1." >
+    <!--skin material="matcarpet" inflate="0.001" subgrid="3" texcoord="true"/-->
+    <geom size=".01" mass="0.001"    solref='0.0001 1' solimp='0.99 0.99 0.01' condim='4'/>
+    <pin coord="0 0"/> 
+    <pin coord="0 14"/> 
+    <pin coord="14 0"/> 
+    <pin coord="14 14"/> 
+    <!--joint kind="main" damping="0.5" limited="true" range="-0.2 0.2" stiffness="0.3" />
+    <joint kind="twist" damping="0.5" limited="true" range="-0.2 0.2" />
+    <joint kind="stretch" damping="0.5" limited="true" range="-0.2 0.2" /-->
+
+
+    <!--pin coord="0 0"/--> 
+        <joint stiffness="0.01" damping="0.05" kind="main"/>
+        <!--joint kind="main" damping="0.01" stiffness="0.001" /-->
+        <joint kind="stretch" stiffness="0.0001"/>
+        <!--tendon kind="main" width="0.01" damping="0.1" limited="true" range="-0.1 0.1" stiffness="1000"/-->
+    
+</composite>
+
+
+
+
+
+
+
+ <body name="ballbody" pos="0 0 1.20">
+            <geom name="ballgeom" type="sphere" size=".1" mass="0.1"/>
+            <joint name="ball_slidex" type="slide" pos="-0.0 0 0.0" axis="1 0 0"  damping="0.1" frictionloss="0.1"/>
+            <joint name="ball_slidey" type="slide" pos="-0.0 0 0.0" axis="0 1 0"  damping="0.1" frictionloss="0.1"/>
+            <joint name="ball_slidez" type="slide" pos="-0.0 0 0.0" axis="0 0 1"  damping="0.1" frictionloss="0.1"/>
+        </body>
+
+
+        <!--body name="B4_4" pos="0.0 0 0.4">               
+            <freejoint/>                    
+            <composite type="cloth" count="9 9 1" spacing="0.05" flatinertia="0.01" offset =" -0.0 0 0">
+                <joint kind="main" damping="0.001"/>
+                <pin coord="9 0"/>
+                <skin material="matcarpet" texcoord="true" inflate="0.005" subgrid="2"/>
+                <geom type="capsule" size="0.005 0.005" rgba=".8 .2 .1 1"/>
+            </composite>
+        </body-->  
+
+    </worldbody>
+
+     <equality>
+    <!--weld name="cloth_c1_grid" body1="B0_0" body2="c1" active="true"  relpose="0 0 -0.2 1 0 0 0" />
+    <weld name="cloth_c1_grid2" body1="B0_1" body2="c1" active="true" relpose="0 0 -0.2 1 0 0 0"  />
+    <weld name="cloth_c1_grid3" body1="B1_0" body2="c1" active="true"  relpose="0 0 -0.2 1 0 0 0" /-->
+    
+    <!--connect name="cloth_r2" body1="r2_panda_link7" body2="B8_0" anchor="0.0 0 0.05"/>
+
+    <connect name="cloth_r3" body1="r3_panda_link7" body2="B0_0" anchor="0.0 0 0.05"/>
+    <connect name="cloth_r4" body1="r4_panda_link7" body2="B0_8" anchor="0.0 0 0.05"/-->
+</equality>
+
+
+    <actuator>
+        
+        <motor joint="ball_slidex" ctrlrange="-2 2" ctrllimited="true" />
+        <motor joint="ball_slidey" ctrlrange="-2 2" ctrllimited="true" />
+        <motor joint="ball_slidez" ctrlrange="-2 2" ctrllimited="true" />
+        
+    </actuator>
+
+
+</mujoco>

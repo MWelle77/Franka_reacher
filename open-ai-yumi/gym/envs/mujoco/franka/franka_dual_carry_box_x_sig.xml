@@ -1,0 +1,29 @@
+<mujoco model="panda">
+    <compiler angle="radian" />
+    <!--option timestep="0.01" gravity="0 0 0" integrator="Euler" /-->
+    <option timestep="0.01" gravity="0 0 -9.81" integrator="Euler" />
+    <size njmax="5000" nconmax="1000" />
+    
+    <include file="franka_dual_carry_box_shared.xml"></include>
+
+
+    <actuator>
+        
+        <motor joint="r1_panda_joint1" ctrlrange="-2 2" ctrllimited="true" />
+        <motor joint="r1_panda_joint2" ctrlrange="-2 2" ctrllimited="true" />
+        <motor joint="r1_panda_joint3" ctrlrange="-2 2" ctrllimited="true" />
+        <motor joint="r1_panda_joint4" ctrlrange="-2 2" ctrllimited="true" />
+        <motor joint="r1_panda_joint5" ctrlrange="-2 2" ctrllimited="true" />
+        <motor joint="r1_panda_joint6" ctrlrange="-2 2" ctrllimited="true" />
+        <motor joint="r1_panda_joint7" ctrlrange="-2 2" ctrllimited="true" />
+
+        <motor joint="r2_panda_joint1" ctrlrange="-2 2" ctrllimited="true" />
+        <motor joint="r2_panda_joint2" ctrlrange="-2 2" ctrllimited="true" />
+        <motor joint="r2_panda_joint3" ctrlrange="-2 2" ctrllimited="true" />
+        <motor joint="r2_panda_joint4" ctrlrange="-2 2" ctrllimited="true" />
+        <motor joint="r2_panda_joint5" ctrlrange="-2 2" ctrllimited="true" />
+        
+    </actuator>
+
+
+</mujoco>
